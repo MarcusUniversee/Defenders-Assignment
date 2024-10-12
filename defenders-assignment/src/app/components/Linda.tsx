@@ -1,5 +1,5 @@
 export default function Linda() {
     return (
-        <div className=""></div>
+        <div className="">OMNOMNOMNOMNOMN i am eating marcus' brownie - linda</div>
     );
 }
