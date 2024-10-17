@@ -1,10 +1,9 @@
 "use client";
 
-import React, { useState } from 'react';
-import '../styles.css'
+import React, { useState, useEffect } from 'react';
+import '../styles.css';
 
-//TODO: pass in a text prop
-const TextDisplay = () => {
+const TextDisplay = ({ text }) => {
   // State to store selected text
   const [selectedText, setSelectedText] = useState('');
   // State to store list of annotations
@@ -15,30 +14,55 @@ const TextDisplay = () => {
     const selection = window.getSelection();
     const selectedStr = selection ? selection.toString() : '';
     if (selectedStr) {
-      //TODO: change the state after selecting (highlighting)
+      setSelectedText(selectedStr);
     }
   };
 
   // Function to add annotation for the selected text
   const addAnnotation = (annotation) => {
-    // TODO: Add logic to save the annotation and update the annotations state
+    const newAnnotation = {
+      selectedText: selectedText,
+      annotation: annotation
+    };
+    setAnnotations((prevAnnotations) => [...prevAnnotations, newAnnotation]);
   };
 
-  //TODO: Log to the console whenever an annotation is added using useEffect()
+  // Log to the console whenever an annotation is added using useEffect()
   useEffect(() => {
-    //
-  }, []); //put reactive elements inside the bracket
+    console.log('Updated Annotations:', annotations);
+  }, [annotations]);
 
   return (
     <div className="text-display border p-4 rounded-lg shadow-lg bg-white">
-      <p className="text-content" onMouseUp={handleTextSelection}>TODO: display text</p>
+      <p className="text-content" onMouseUp={handleTextSelection}>{text}</p>
 
-      TODO: Functionality to add an annotation
-      
+      {selectedText && (
+        <div className="annotation-input mt-4">
+          <input
+            type="text"
+            placeholder={`Annotations: "${selectedText}"`}
+            onKeyDown={(e) => {
+              if (e.key === 'Enter' && e.target.value.trim() !== '') {
+                addAnnotation(e.target.value);
+                e.target.value = '';
+              }
+            }}
+          />
+        </div>
+      )}
 
-      TODO: show annotations
-
-      
+      {annotations.length > 0 && (
+        <div className="annotations-list mt-4">
+          <h3>Annotations:</h3>
+          <ul>
+            {annotations.map((annotation, index) => (
+              <li key={index}>
+                <strong>{annotation.selectedText}</strong>: {annotation.annotation}
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
     </div>
   );
 };
