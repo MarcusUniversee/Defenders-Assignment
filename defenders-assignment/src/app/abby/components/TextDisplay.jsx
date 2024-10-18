@@ -76,6 +76,6 @@ const TextDisplay = ({ text, annotationInput, clearAnnotationInput }) => {
       )}
     </div>
   );
-};
+}
 
 export default TextDisplay;
