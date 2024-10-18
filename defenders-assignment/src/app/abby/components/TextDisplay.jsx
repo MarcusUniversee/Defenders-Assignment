@@ -1,10 +1,10 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
-import "../styles.css";
+import '../styles.css';
 
-//TODO: pass in a text prop
-const TextDisplay = ({ text }) => {
+// Pass annotationInput and clearAnnotationInput as props
+const TextDisplay = ({ text, annotationInput, clearAnnotationInput }) => {
   // State to store selected text
   const [selectedText, setSelectedText] = useState("");
   // State to store list of annotations
@@ -20,14 +20,15 @@ const TextDisplay = ({ text }) => {
   };
 
   // Function to add annotation for the selected text
-  const addAnnotation = (annotationText) => {
-    if (selectedText) {
+  const addAnnotation = () => {
+    if (selectedText && annotationInput) {
       const newAnnotation = {
         text: selectedText,
-        annotation: annotationText || "No annotation provided",
+        annotation: annotationInput || "No annotation provided",
       };
       setAnnotations([...annotations, newAnnotation]);
       setSelectedText(""); // Clear selected text after adding annotation
+      clearAnnotationInput(); // Clear the annotation input after it's used
     }
   };
 
@@ -52,7 +53,7 @@ const TextDisplay = ({ text }) => {
           </p>
           <button
             className="mt-2 px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600"
-            onClick={() => addAnnotation("Annotation for selected text")}
+            onClick={addAnnotation}
           >
             Add Annotation
           </button>
@@ -66,8 +67,8 @@ const TextDisplay = ({ text }) => {
           <ul className="list-disc list-inside">
             {annotations.map((annotation, index) => (
               <li key={index} className="mb-1">
-                <strong>Selected Text:</strong> {annotation.text} <br />
-                <strong>Annotation:</strong> {annotation.annotation}
+                <strong>Highlighted Text:</strong> {annotation.text} <br />
+                <i>    Annotation:</i> {annotation.annotation}
               </li>
             ))}
           </ul>
@@ -78,4 +79,3 @@ const TextDisplay = ({ text }) => {
 };
 
 export default TextDisplay;
-
