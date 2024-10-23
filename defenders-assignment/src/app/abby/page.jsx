@@ -7,7 +7,7 @@ import './styles.css'
 
 const App = () => {
   const sampleText = `
-    Hello, I am a sample text block for highlighting and annotation.
+    Hi! I'm tragically devastated to have missed a #DefendersofWildlife meeting, but unfortunately I am viciously cramming for a midterm right now! Please pray for me. I love you guys have a good meeting :P (p.s. I hope my moving image worked otherwise that's lame and I'll be sad).
     Select a portion of this text to highlight and annotate!!
   `;
 
@@ -26,8 +26,8 @@ const App = () => {
 
   return (
     <div className="app-container p-6 bg-gray-100 min-h-screen flex flex-col justify-center items-center">
-      <div className="w-full max-w-2xl">
-        <h1 className="text-center text-2xl font-bold mb-6">Text Annotation Tool</h1>
+      <div className="w-full max-w-4xl">
+        <h1 className="text-center text-2xl font-bold mb-6">Abby's Annotation Tool!</h1>
 
         {/* Pass annotationInput and clearAnnotationInput to TextDisplay */}
         <TextDisplay

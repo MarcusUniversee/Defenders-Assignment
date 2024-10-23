@@ -32,6 +32,19 @@ const TextDisplay = ({ text, annotationInput, clearAnnotationInput }) => {
     }
   };
 
+  // Function to edit an annotation
+  const editAnnotation = (index, newAnnotation) => {
+    const updatedAnnotations = [...annotations];
+    updatedAnnotations[index].annotation = newAnnotation;
+    setAnnotations(updatedAnnotations);
+  };
+
+  // Function to remove an annotation
+  const removeAnnotation = (index) => {
+    const updatedAnnotations = annotations.filter((_, i) => i !== index);
+    setAnnotations(updatedAnnotations);
+  };
+
   // Log to the console whenever an annotation is added
   useEffect(() => {
     if (annotations.length > 0) {
@@ -40,35 +53,50 @@ const TextDisplay = ({ text, annotationInput, clearAnnotationInput }) => {
   }, [annotations]);
 
   return (
-    <div className="text-display border p-4 rounded-lg shadow-lg bg-white">
-      <p className="text-content" onMouseUp={handleTextSelection}>
-        {text}
-      </p>
+    <div className="flex">
+      {/* Main text display */}
+      <div className="text-display border p-4 rounded-lg shadow-lg bg-white w-2/3">
+        <p className="text-content" onMouseUp={handleTextSelection}>
+          {text}
+        </p>
 
-      {/* Show selected text and allow adding an annotation */}
-      {selectedText && (
-        <div className="mt-4">
-          <p className="italic text-gray-600">
-            Selected Text: "{selectedText}"
-          </p>
-          <button
-            className="mt-2 px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600"
-            onClick={addAnnotation}
-          >
-            Add Annotation
-          </button>
-        </div>
-      )}
+        {/* Show selected text and allow adding an annotation */}
+        {selectedText && (
+          <div className="mt-4">
+            <p className="italic text-gray-600">
+              Selected Text: "{selectedText}"
+            </p>
+            <button
+              className="mt-2 px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600"
+              onClick={addAnnotation}
+            >
+              Add Annotation
+            </button>
+          </div>
+        )}
+      </div>
 
-      {/* Display list of annotations */}
+      {/* Annotations list displayed on the side */}
       {annotations.length > 0 && (
-        <div className="mt-6">
-          <h3 className="text-xl font-semibold mb-2">Annotations Log:</h3>
-          <ul className="list-disc list-inside">
+        <div className="ml-6 w-1/3 bg-gray-200 p-4 rounded-lg shadow-lg">
+          <h3 className="text-xl font-semibold mb-2">Annotations:</h3>
+          <ul className="space-y-4">
             {annotations.map((annotation, index) => (
               <li key={index} className="mb-1">
                 <strong>Highlighted Text:</strong> {annotation.text} <br />
-                <i>    Annotation:</i> {annotation.annotation}
+                <textarea
+                  className="w-full mt-1 p-1 border rounded"
+                  value={annotation.annotation}
+                  onChange={(e) =>
+                    editAnnotation(index, e.target.value)
+                  }
+                />
+                <button
+                  className="text-sm text-red-500 mt-1"
+                  onClick={() => removeAnnotation(index)}
+                >
+                  Remove
+                </button>
               </li>
             ))}
           </ul>
@@ -76,6 +104,6 @@ const TextDisplay = ({ text, annotationInput, clearAnnotationInput }) => {
       )}
     </div>
   );
-}
+};
 
 export default TextDisplay;
