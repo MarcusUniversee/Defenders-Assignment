@@ -1,10 +1,10 @@
 "use client";
 
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import '../styles.css'
 
 //TODO: pass in a text prop
-const TextDisplay = ({ text }) => {
+const TextDisplay = () => {
   // State to store selected text
   const [selectedText, setSelectedText] = useState('');
   // State to store list of annotations
@@ -75,6 +75,19 @@ const TextDisplay = ({ text }) => {
           </ul>
         </div>
       )}
+    //
+  }, []); //put reactive elements inside the bracket
+
+  return (
+    <div className="text-display border p-4 rounded-lg shadow-lg bg-white">
+      <p className="text-content" onMouseUp={handleTextSelection}>TODO: display text</p>
+
+      TODO: Functionality to add an annotation
+      
+
+      TODO: show annotations
+
+      
     </div>
   );
 };
