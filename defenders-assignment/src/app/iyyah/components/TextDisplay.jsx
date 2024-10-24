@@ -1,9 +1,11 @@
 "use client";
-import TextDisplay from '../components/TextDisplay';
+
 import React, { useState, useEffect } from 'react';
-import '../styles.css'; // Adjust the path if necessary
+import '../styles.css';
 
 const TextDisplay = () => {
+  const text = 'This is a sample text block that you can highlight and annotate. Select a portion of this text to make notes or highlight important sections.';
+
   const [selectedText, setSelectedText] = useState('');
   const [annotations, setAnnotations] = useState([]);
 
@@ -26,9 +28,9 @@ const TextDisplay = () => {
 
   return (
     <div className="text-display">
+      {}
       <p className="text-content" onMouseUp={handleTextSelection}>
-        {/* Display text content */}
-        TODO: display text here
+        {text}
       </p>
 
       {selectedText && (
