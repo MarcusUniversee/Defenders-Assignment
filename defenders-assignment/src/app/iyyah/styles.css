@@ -1,3 +1,43 @@
 .app-container {
     background-color: lightblue;
+    padding: 20px;
+      border-radius: 8px;
+}
+
+.header {
+  font-size: 2rem;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.text-display {
+  border: 1px solid #ddd;
+  padding: 10px;
+  border-radius: 4px;
+  background-color: #fff;
+}
+
+.text-content {
+  cursor: text;
+}
+
+.annotation-box {
+  margin-top: 10px;
+}
+
+.annotations-list {
+  margin-top: 20px;
+}
+
+.annotations-list ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.annotations-list li {
+  background-color: #f9f9f9;
+  margin: 5px 0;
+  padding: 5px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
 }
