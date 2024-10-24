@@ -7,7 +7,7 @@
 
 body {
   font-family: 'Roboto', sans-serif;
-  background-color: #F3ECEC; /* Soft beige background */
+  background-color: pink; /* Soft beige background */
   color: #333;
   padding: 20px;
   min-height: 100vh;
@@ -55,7 +55,7 @@ h1, h3 {
 
 .annotations-list {
   position: absolute;
-  left: -300px;
+  left: -350px;
   width: 300px;
   height: auto;
   max-height: 100%;

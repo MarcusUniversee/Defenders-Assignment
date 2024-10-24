@@ -79,8 +79,8 @@ const TextDisplay = () => {
 
   return (
     <div className="app-container">
-      <h1 className="text-center">Aaron's Cool Header!</h1>
       <h3 className="text-center">Welcome to the Cat-Themed Annotation Tool!</h3>
+      
       <div className="text-display-container">
         {annotations.length > 0 && (
           <div className="annotations-list">
@@ -149,7 +149,7 @@ const TextDisplay = () => {
       </div>
 
       <div className="footer">
-        <p>🐱 Cat-Themed Fun, Powered by You! 🐱</p>
+        <p>🐱 Cat-Themed Fun, Powered by Whiskers! 🐱</p>
       </div>
     </div>
   );
