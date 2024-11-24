@@ -1,45 +1,52 @@
 "use client";
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { getAIAnnotation } from '../utils/pdfUtils';
 import '../styles.css'
 
-//TODO: pass in a text prop
-const TextDisplay = () => {
-  // State to store selected text
+const TextDisplay = ({ text }) => {
   const [selectedText, setSelectedText] = useState('');
-  // State to store list of annotations
   const [annotations, setAnnotations] = useState([]);
-  // State to store annotation input
   const [annotationInput, setAnnotationInput] = useState('');
+  const [isLoadingAI, setIsLoadingAI] = useState(false);
 
-  // Function to handle text selection
   const handleTextSelection = () => {
     const selection = window.getSelection();
     const selectedStr = selection ? selection.toString() : '';
     if (selectedStr) {
-      //TODO: change the state after selecting (highlighting)
       setSelectedText(selectedStr);
     }
   };
 
-  // Function to add annotation for the selected text
-  const addAnnotation = () => {
-    if (selectedText && annotationInput) {
-      // TODO: Add logic to save the annotation and update the annotations state
-      setAnnotations([...annotations, { text: selectedText, annotation: annotationInput }]);
-      setSelectedText(''); // Reset the selected text
-      setAnnotationInput(''); // Clear the annotation input field
+  const addAnnotation = (annotation, isAI = false) => {
+    if (selectedText && annotation) {
+      setAnnotations([...annotations, { text: selectedText, annotation, isAI }]);
+      setSelectedText('');
+      setAnnotationInput('');
     }
   };
 
-  //TODO: Log to the console whenever an annotation is added using useEffect()
+  const handleAIAnnotation = async () => {
+    if (selectedText) {
+      setIsLoadingAI(true);
+      try {
+        const aiAnnotation = await getAIAnnotation(selectedText, text);
+        addAnnotation(aiAnnotation, true);
+      } catch (error) {
+        console.error('Error getting AI annotation:', error);
+        alert('Failed to get AI annotation. Please try again.');
+      } finally {
+        setIsLoadingAI(false);
+      }
+    }
+  };
+
   useEffect(() => {
     if (annotations.length > 0) {
       console.log('Annotation added:', annotations[annotations.length - 1]);
     }
-  }, [annotations]); // Run this effect whenever 'annotations' changes
+  }, [annotations]);
 
-  //put reactive elements inside the bracket
   return (
     <div className="text-display border p-4 rounded-lg shadow-lg bg-white">
       <p className="text-content" onMouseUp={handleTextSelection}>{text}</p>
@@ -49,16 +56,23 @@ const TextDisplay = () => {
           <p>Annotate: "<em>{selectedText}</em>"</p>
           <input
             type="text"
-            className="border p-2 rounded w-full"
+            className="border p-2 rounded w-full mb-2"
             placeholder="Enter annotation"
             value={annotationInput}
             onChange={(e) => setAnnotationInput(e.target.value)}
           />
           <button
-            className="bg-blue-500 text-white p-2 rounded mt-2"
-            onClick={addAnnotation}
+            className="bg-blue-500 text-white p-2 rounded mr-2"
+            onClick={() => addAnnotation(annotationInput)}
           >
             Add Annotation
+          </button>
+          <button
+            className="bg-green-500 text-white p-2 rounded"
+            onClick={handleAIAnnotation}
+            disabled={isLoadingAI}
+          >
+            {isLoadingAI ? 'Getting AI Annotation...' : 'Get AI Annotation'}
           </button>
         </div>
       )}
@@ -70,24 +84,12 @@ const TextDisplay = () => {
             {annotations.map((item, index) => (
               <li key={index} className="mb-2">
                 <strong>"{item.text}"</strong>: {item.annotation}
+                {item.isAI && <span className="text-green-500 ml-2">(AI-generated)</span>}
               </li>
             ))}
           </ul>
         </div>
       )}
-    //
-  }, []); //put reactive elements inside the bracket
-
-  return (
-    <div className="text-display border p-4 rounded-lg shadow-lg bg-white">
-      <p className="text-content" onMouseUp={handleTextSelection}>TODO: display text</p>
-
-      TODO: Functionality to add an annotation
-      
-
-      TODO: show annotations
-
-      
     </div>
   );
 };
