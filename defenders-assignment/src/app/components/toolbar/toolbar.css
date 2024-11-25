@@ -1,0 +1,111 @@
+.toolbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #f4f4f4;
+    padding: 10px 20px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  .toolbar-item {
+    display: flex;
+    align-items: center;
+  }
+  
+  .search-bar .search-btn {
+    background-color: #e0e0e0;
+    border: none;
+    border-radius: 20px;
+    padding: 5px 15px;
+    font-size: 14px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+  
+  .formatting .toolbar-btn {
+    background: none;
+    border: none;
+    font-size: 18px;
+    margin: 0 5px;
+    cursor: pointer;
+    font-weight: bold;
+    position: relative;
+    padding: 5px 10px;
+    opacity: 1;
+    transition: background-color 0.2s ease, box-shadow 0.2s ease;
+    z-index: 1;
+  }
+  
+  .formatting .toolbar-btn:hover {
+    background-color: #878383;
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
+    border-radius: 4px;
+  }
+  
+  .formatting .toolbar-btn::after {
+    content: attr(data-tooltip);
+    position: absolute;
+    bottom: -85%;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #000;
+    color: #fff;
+    padding: 5px 8px;
+    border-radius: 4px;
+    white-space: nowrap;
+    font-size: 12px;
+    opacity: 0;
+    z-index: 1000;
+    transition: opacity 0.2s ease-in-out;
+  }
+  
+  .formatting .toolbar-btn:hover::after {
+    opacity: 1;
+  }
+  
+  .color-picker {
+    position: absolute;
+    top: 35px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    padding: 5px;
+    background: #fff;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    z-index: 100;
+    pointer-events: auto;
+  }
+  
+  .color-swatch {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    cursor: pointer;
+    border: 1px solid #ddd;
+    background-clip: content-box;
+    padding: 3px;
+    transition: transform 0.5s ease;
+  }
+  
+  .color-swatch:hover {
+    transform: scale(1.2);
+  }
+  
+  .save-btn {
+    background-color: #f8cba8;
+    border: none;
+    border-radius: 20px;
+    padding: 5px 15px;
+    font-size: 14px;
+    cursor: pointer;
+    font-weight: bold;
+  }
+  
+

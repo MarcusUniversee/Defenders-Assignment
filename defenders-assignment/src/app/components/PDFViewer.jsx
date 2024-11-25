@@ -1,7 +1,7 @@
 "use client"
 
 import React, { useEffect, useRef, useState } from 'react'
-import { ScrollArea } from "../../../components/ui/scroll-area"
+import { ScrollArea } from "./ui/scroll-area"
 
 export default function PDFViewer({ documentStructure, onTextSelect }) {
   const contentRef = useRef(null)

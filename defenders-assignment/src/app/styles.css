@@ -1,3 +1,155 @@
-.app-container {
-    background-color: lightblue;
-}
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f5f5dc; /* Light beige */
+    overflow-y: auto; /* Allow scrolling */
+    height: 150vh; /* Make the page longer */
+  }
+  
+  .App {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+  }
+  
+  /* Header Section */
+  .App-header {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    background-color: #f5f5dc; /* Match the background */
+  }
+  
+  .App-logo {
+    width: 50px;
+    height: 50px;
+    margin-right: 10px;
+  }
+  
+  .App-header h1 {
+    margin: 0;
+    font-size: 24px; /* Adjusted smaller font size */
+  }
+  
+  /* Main Content Section */
+  .App-content {
+    display: flex;
+    height: 30vh; /* Ensure the entire content area spans full height */
+  }
+  
+  /* Left Section */
+  .App-left-section {
+    flex: 2; /* Take up more space than the gray side */
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    background-color: #f5f5dc; /* Beige background */
+    justify-content: center; /* Center vertically */
+    align-items: center; /* Center horizontally */
+  }
+  
+  /* Buttons at the Top of the Left Section */
+  .App-buttons {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    padding: 10px;
+  }
+  
+  .App-upload-button,
+  .App-publish-button {
+    padding: 10px 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  /* Center Toolbar and PDF Viewer */
+  .App-toolbar,
+  .App-pdf-viewer {
+    margin: 10px 0;
+    text-align: center;
+  }
+  
+  .App-right-section {
+    flex: 1;
+    padding: 20px;
+    display: flex;
+    flex-direction: column; /* Keep items stacked vertically */
+    justify-content: flex-start; /* Align items to start (top) */
+    align-items: center; /* Center items horizontally */
+    background-color: #f2f2f2; /* Light gray background */
+    min-height: 150vh; /* Full viewport height */
+    box-sizing: border-box;
+  }
+  
+  
+  .App-annotation-tool,
+  .App-glossary {
+    margin: 150px 0; /* Adjust margin to control spacing */
+  }
+
+@font-face {
+    font-family: 'Montserrat';
+    src: url(/src/fonts/Montserrat/Montserrat-VariableFont_wght.ttf);
+    font-style: normal;
+  }
+  
+  .button_white {
+    background-color: #FFFFFF; /* White */
+    border: none;
+    color: black;
+    padding: 10px 24px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    font-family: "Montserrat", sans-serif;
+    font-weight: bold;
+    border-radius: 8px;
+  }
+  .button_white:hover {
+    background-color: #F3EEDA; /* Cream */
+    color: #EA8439;
+  }
+  
+  .button_orange {
+    background-color: #EA8439; /* Orange */
+    border: none;
+    color: white;
+    padding: 10px 24px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    font-family: "Montserrat", sans-serif;
+    font-weight: bold;
+    border-radius: 8px;
+  }
+  .button_orange:hover {
+    background-color: #F3EEDA; /* Cream */
+    color: #EA8439;
+  }
+  
+  .heading1 {
+    font-family: "Montserrat", sans-serif;
+    font-weight: bold;
+    font-size: 20px;
+    color: black;
+  }
+  
+  .heading2 {
+    font-family: "Montserrat", sans-serif;
+    font-weight: 600;
+    font-size: 16px;
+    color: black;
+  }
+  
+  .bodytext {
+    font-family: "Montserrat", sans-serif;
+    font-weight: 500;
+    font-size: 15px;
+    color: black;
+  }
+  

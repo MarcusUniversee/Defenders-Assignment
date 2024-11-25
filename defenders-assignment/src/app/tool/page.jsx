@@ -1,17 +1,17 @@
 "use client"
 
 import React, { useState } from 'react'
-import { Button } from "../../components/ui/button"
-import { Input } from "../../components/ui/input"
-import { Card, CardContent } from "../../components/ui/card"
-import { Textarea } from "../../components/ui/textarea"
-import { ScrollArea } from "../../components/ui/scroll-area"
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "../../components/ui/tabs"
+import { Button } from "../components/ui/button"
+import { Input } from "../components/ui/input"
+import { Card, CardContent } from "../components/ui/card"
+import { Textarea } from "../components/ui/textarea"
+import { ScrollArea } from "../components/ui/scroll-area"
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "../components/ui/tabs"
 import { Bold, Italic, Underline, LinkIcon, Pencil, Trash2 } from 'lucide-react'
 import { format } from 'date-fns'
-import PDFViewer from './components/PDFViewer'
-import { processDocument } from './utils/documentProcessor'
-import { getAIAnnotation } from './utils/pdfUtils'
+import PDFViewer from '../components/PDFViewer'
+import { processDocument } from '../utils/documentProcessor'
+import { getAIAnnotation } from '../utils/pdfUtils'
 
 export default function AnnotationTool() {
   const [pdfFile, setPdfFile] = useState(null)
