@@ -1,6 +1,10 @@
 {
   "compilerOptions": {
-    "lib": ["dom", "dom.iterable", "esnext"],
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "esnext"
+    ],
     "allowJs": true,
     "skipLibCheck": true,
     "strict": true,
@@ -18,9 +22,26 @@
       }
     ],
     "paths": {
-      "@/*": ["./src/*"]
-    }
+      "@/*": [
+        "./src/*"
+      ]
+    },
+    "target": "ES2017"
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "src/app/nathan/page.jsx", "src/app/liyah/page.jsx", "src/app/linda/page.jsx", "src/app/iyyah/page.jsx", "src/app/abby/page.jsx", "src/app/aaron/page.jsx", "src/app/aaron/components/TextDisplay.jsx"],
-  "exclude": ["node_modules"]
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    ".next/types/**/*.ts",
+    "src/app/nathan/page.jsx",
+    "src/app/liyah/page.jsx",
+    "src/app/linda/page.jsx",
+    "src/app/iyyah/page.jsx",
+    "src/app/abby/page.jsx",
+    "src/app/aaron/page.jsx",
+    "src/app/aaron/components/TextDisplay.jsx"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
 }
